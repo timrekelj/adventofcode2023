@@ -3,7 +3,6 @@ package second
 import "core:fmt"
 import "core:os"
 import "core:strings"
-import "core:strconv"
 
 Numbers :: struct {
     name: string,
@@ -88,13 +87,5 @@ calculate_calibration_value :: proc(line: string) -> int {
         } 
     }
 
-    return concatenate(first.value, last.value)
-}
-
-concatenate :: proc(x: int, y: int) -> int {
-    power: int = 1;
-    for y >= power {
-        power *= 10;
-    }
-    return x * power + y;        
+    return 10 * first.value + last.value
 }
