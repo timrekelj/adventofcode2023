@@ -4,11 +4,11 @@ import "core:fmt"
 import "core:os"
 import "core:strings"
 import "core:strconv"
-import "core:time"
 
 Card :: struct {
     id: int,
     value: int,
+    count: int
 }
 
 main :: proc() {
@@ -21,28 +21,24 @@ main :: proc() {
     sum: int = 0
 
     cards := [dynamic]Card{}
+    defer delete(cards)
 
     content := string(data)
     lines := strings.split_lines(content)
     for line in lines {
         if line == "" { continue }
         card_id, sum_win := parse_card(line)
-        fmt.println(line)
-        fmt.println(" > Card", card_id, "won", sum_win)
-        append(&cards, Card{card_id, sum_win})
+        append(&cards, Card{card_id, sum_win, 1})
     }
 
-    n_cards := len(cards)
-    for i in 0..<len(cards) {
-        // fmt.println("Card", cards[i].id, "won", cards[i].value)
-        fmt.println("remaining: ", len(cards) - i)
-        for j in 0..<cards[i].value {
-            // fmt.println("Appending", cards[cards[i].id + j].id)
-            append(&cards, cards[cards[i].id + j])
+    for card, i in cards {
+        sum += card.count
+        for j in i+1..=i+card.value {
+            cards[j].count += card.count
         }
     }
 
-    fmt.println("Sum of cards:", len(cards))
+    fmt.println("Sum of cards:", sum)
 }
 
 parse_card :: proc(line: string) -> (int, int) {
