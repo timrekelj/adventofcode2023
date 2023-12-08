@@ -35,7 +35,7 @@ main :: proc() {
         number_of_ways *= get_number_of_ways(times[i], distances[i])
     }
 
-    fmt.println("Number of ways: ", number_of_ways)
+    fmt.println("Number of ways:", number_of_ways)
 }
 
 get_number_of_ways :: proc(time: int, distance: int) -> int {

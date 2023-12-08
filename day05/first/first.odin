@@ -50,5 +50,5 @@ main :: proc() {
             min_location = seed
         }
     }
-    fmt.println("Lowest location number: ", min_location)
+    fmt.println("Lowest location number:", min_location)
 }

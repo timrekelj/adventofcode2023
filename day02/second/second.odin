@@ -28,7 +28,7 @@ main :: proc() {
         sum += game.min_red * game.min_green * game.min_blue
     }
 
-    fmt.println("Sum of the power of min colors: ", sum)
+    fmt.println("Sum of the power of min colors:", sum)
 }
 
 new_game :: proc(line: string) -> Game {

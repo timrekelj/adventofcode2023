@@ -42,13 +42,14 @@ main :: proc() {
                     (i < len(content) - 2 && n_end < len(content[i]) - 1 && valid_string(content[i + 1][n_end:n_end + 1])) ||
                     (i < len(content) - 2 && n_start != 0 && valid_string(content[i + 1][n_start - 1:n_start]))
                 ) {
+
                     sum += strconv.atoi(content[i][n_start:n_end])
                 }
             }
         }
     }
     
-    fmt.println("Sum of part numbers: ", sum)
+    fmt.println("Sum of part numbers:", sum)
 }
 
 valid_string :: proc(check: string) -> bool {

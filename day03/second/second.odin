@@ -77,7 +77,7 @@ main :: proc() {
         }
     }
 
-    fmt.println("Sum of part numbers: ", sum)
+    fmt.println("Sum of part numbers:", sum)
 }
 
 find_in_string :: proc(check: string) -> int {

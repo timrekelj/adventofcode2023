@@ -30,7 +30,7 @@ main :: proc() {
         }
     }
     
-    fmt.println("Number of ways: ", get_number_of_ways(
+    fmt.println("Number of ways:", get_number_of_ways(
         strconv.atoi(strings.join(time[:], "")),
         strconv.atoi(strings.join(distance[:], "")),
     ))

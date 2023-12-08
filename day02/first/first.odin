@@ -28,7 +28,7 @@ main :: proc() {
         sum += int(game.compatible) * game.id
     }
 
-    fmt.println("Sum of compatible games: ", sum)
+    fmt.println("Sum of compatible games:", sum)
 }
 
 new_game :: proc(line: string) -> Game {

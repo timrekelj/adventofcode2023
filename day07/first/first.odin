@@ -4,7 +4,6 @@ import "core:fmt"
 import "core:os"
 import "core:strings"
 import "core:strconv"
-import "core:time"
 
 Type :: enum {
     HIGH_CARD,
@@ -35,8 +34,6 @@ main :: proc() {
         panic("Failed to read file")
     }
     defer delete(data)
-
-    start_time := time.now()
 
     content := string(data)
     lines := strings.split_lines(content)
@@ -110,16 +107,13 @@ main :: proc() {
     curr_hand := first_hand
     sum := curr_hand.bid
     i := 2
-    fmt.println(curr_hand.cards, curr_hand.type)
     for curr_hand.next_hand != nil {
-        fmt.println(curr_hand.next_hand.?.cards, curr_hand.next_hand.?.type)
         sum += i * curr_hand.next_hand.?.bid
         curr_hand = curr_hand.next_hand.?
         i += 1
     }
 
-    fmt.println("Total winnings are: ", sum)
-    fmt.println("Time: ", time.since(start_time))
+    fmt.println("Total winnings are:", sum)
 }
 
 get_hand_type :: proc(type_counter: ^map[Card]int) -> Type {
